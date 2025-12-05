@@ -57,7 +57,7 @@ public static class FreshRanges
                 continue;
             }
 
-            if (currentRange.Includes(otherRange.Start))
+            if (currentRange.Overlaps(otherRange))
             {
                 currentRange.Finish = otherRange.Finish;
                 sortedRanges.RemoveAt(index);

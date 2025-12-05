@@ -9,5 +9,5 @@ public class FreshRange(long start, long finish)
 
     public bool Wraps(FreshRange other) => Includes(other.Start) && Includes(other.Finish);
 
-    public bool Overlaps(FreshRange other) => Includes(other.Start) || Includes(other.Finish);
+    public bool Overlaps(FreshRange other) => Includes(other.Start);
 }
