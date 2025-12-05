@@ -1,0 +1,17 @@
+<Solution>
+  <Folder Name="/AdventFutilities/">
+    <Project Path="AdventFutilities/AdventUtilities.fsproj" />
+  </Folder>
+  <Folder Name="/CSharp/">
+    <Project Path="CSharp/Day01/Day01.csproj" />
+    <Project Path="CSharp/Day02/Day02.csproj" />
+    <Project Path="CSharp/Day03/Day03.csproj" />
+    <Project Path="CSharp/Day04/Day04.csproj" />
+    <Project Path="CSharp/Day05/Day05.csproj" />
+  </Folder>
+  <Folder Name="/FSharp/">
+    <Project Path="FSharp/Day01/Day01.fsproj" />
+    <Project Path="FSharp/Day02/Day02.fsproj" />
+  </Folder>
+  <Project Path="AdventUtilities/AdventUtilities.csproj" />
+</Solution>
