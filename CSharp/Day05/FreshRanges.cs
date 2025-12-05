@@ -21,7 +21,7 @@ public static class FreshRanges
         bool parseIds = false;
         while (!sr.EndOfStream)
         {
-            string current = sr.ReadLine();
+            string current = sr.ReadLine()!;
             if (String.IsNullOrEmpty(current))
             {
                 parseIds = true;
@@ -57,15 +57,15 @@ public static class FreshRanges
                 continue;
             }
 
-            if (!currentRange.Includes(otherRange.Start))
-            {
-                currentRange = otherRange;
-                index++;
-            }
-            else
+            if (currentRange.Includes(otherRange.Start))
             {
                 currentRange.Finish = otherRange.Finish;
                 sortedRanges.RemoveAt(index);
+            }
+            else
+            {
+                currentRange = otherRange;
+                index++;
             }
         }
 

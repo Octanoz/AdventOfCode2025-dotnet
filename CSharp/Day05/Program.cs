@@ -10,5 +10,6 @@ Dictionary<string, string> filePaths = new()
 
 int part1 = FreshRanges.FreshIngredients(filePaths["input"]);
 long part2 = FreshRanges.ValidIds();
+
 Console.WriteLine($"Part 1: {part1}");
 Console.WriteLine($"Part 2: {part2}");
