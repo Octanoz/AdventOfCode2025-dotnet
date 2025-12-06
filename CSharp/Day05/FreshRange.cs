@@ -2,7 +2,7 @@ namespace Day05;
 
 public class FreshRange(long start, long finish)
 {
-    public long Start { get; set; } = start;
+    public long Start { get; init; } = start;
     public long Finish { get; set; } = finish;
 
     public bool Includes(long value) => value >= Start && value <= Finish;
