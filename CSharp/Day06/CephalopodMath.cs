@@ -34,7 +34,7 @@ public static class CephalodMath
             }
         }
 
-        return results.Aggregate(0L, (acc, val) => acc += val);
+        return results.Sum();
     }
 
     public static long RTLSum(string[] input)
@@ -68,7 +68,7 @@ public static class CephalodMath
                             _ => throw new ArgumentException($"Unknown operator given: {action}")
                         });
 
-                        //new column reset
+                        // new column and equation reset
                         numbers.Clear();
                         col++;
                         row = 0;
@@ -99,7 +99,7 @@ public static class CephalodMath
             _ => throw new ArgumentException($"Unknown operator given: {action}")
         });
 
-        return results.Aggregate(0L, (acc, val) => acc += val);
+        return results.Sum();
     }
 
     private static long MultiplyStrings(List<string> numbers) => numbers.Aggregate(1L, (acc, val) => acc * long.Parse(val));
