@@ -17,19 +17,23 @@ let isInvalidSplit (code: string) =
         first = second
     | false -> false
 
-let invalidCodeSplit (code: string) =
-    let ranges = getRanges code |> List.ofArray
+let isInvalidChunked (code: string) =
+    let maxChunk = code.Length / 2
 
-    let rec loop ranges invalidSum =
-        match ranges with
-        | [] -> invalidSum
-        | (start, finish) :: tail ->
-            let mutable currentSum = 0L
+    let rec loop chunkSize =
+        match chunkSize with
+        | size when size > maxChunk -> false
+        | size ->
+            let chunk = code[.. size - 1]
+            let repetitions = code.Length / size
+            let repeatedString = String.init repetitions (fun _ -> chunk)
 
-            for current in start..finish do
-                if isInvalidSplit (string current) then
-                    currentSum <- currentSum + current
+            if repeatedString = code then true else loop (size + 1)
 
-            loop tail (invalidSum + currentSum)
+    loop 1
 
-    loop ranges 0L
+let invalidCode invalidCheck code =
+    getRanges code
+    |> Array.sumBy (fun (start, finish) ->
+        [ start..finish ]
+        |> Seq.sumBy (fun current -> if invalidCheck (string current) then current else 0L))
