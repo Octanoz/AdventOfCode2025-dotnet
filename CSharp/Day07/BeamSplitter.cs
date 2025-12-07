@@ -101,10 +101,9 @@ public static class BeamSplitter
         }
 
         long total = 0;
-        var lastRow = countSpan.GetRowSpan(grid.Height - 1);
-        for (int c = 0; c < grid.Width; c++)
+        foreach (var cell in countSpan.GetRow(grid.Height - 1))
         {
-            total += lastRow[c];
+            total += cell;
         }
 
         return total;
