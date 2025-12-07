@@ -9,7 +9,7 @@ public static class BeamSplitter
     private const char Beam = '|';
     private const char Splitter = '^';
 
-    public static int Splits(Span<string> input)
+    public static long SplitBeams(Span<string> input, bool partTwo = false)
     {
         char[,] grid = input.New2DGrid<char>();
         Span2D<char> gridSpan = grid.AsSpan2D();
@@ -17,7 +17,7 @@ public static class BeamSplitter
         Span<char> firstRow = gridSpan.GetRowSpan(0);
         SetFirstBeam(firstRow);
 
-        return PropagateBeam(gridSpan);
+        return partTwo ? BeamTimelines(gridSpan) : PropagateBeam(gridSpan);
     }
 
     private static void SetFirstBeam(Span<char> firstRow)
@@ -51,7 +51,7 @@ public static class BeamSplitter
                         currentRow[col + 1] = Beam;
                         splits++;
                     }
-                    else
+                    else // '.'
                     {
                         currentRow[col] = Beam;
                     }
@@ -60,17 +60,6 @@ public static class BeamSplitter
         }
 
         return splits;
-    }
-
-    public static long Timelines(Span<string> input)
-    {
-        char[,] grid = input.New2DGrid<char>();
-        Span2D<char> gridSpan = grid.AsSpan2D();
-
-        Span<char> firstRow = gridSpan.GetRowSpan(0);
-        SetFirstBeam(firstRow);
-
-        return BeamTimelines(gridSpan);
     }
 
     private static long BeamTimelines(Span2D<char> grid)
@@ -104,7 +93,7 @@ public static class BeamSplitter
                     nextRow[col - 1] += timelineCount;
                     nextRow[col + 1] += timelineCount;
                 }
-                else
+                else // '.'
                 {
                     nextRow[col] += timelineCount;
                 }
