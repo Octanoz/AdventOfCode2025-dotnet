@@ -26,9 +26,9 @@ let isInvalidChunked (code: string) =
         | size ->
             let chunk = code[.. size - 1]
             let repetitions = code.Length / size
-            let repeatedString = String.init repetitions (fun _ -> chunk)
+            let repeatedChunk = String.init repetitions (fun _ -> chunk)
 
-            if repeatedString = code then true else loop (size + 1)
+            if repeatedChunk = code then true else loop (size + 1)
 
     loop 1
 

@@ -9,6 +9,7 @@
     <Project Path="CSharp/Day04/Day04.csproj" />
     <Project Path="CSharp/Day05/Day05.csproj" />
     <Project Path="CSharp/Day06/Day06.csproj" />
+    <Project Path="CSharp/Day07/Day07.csproj" />
   </Folder>
   <Folder Name="/FSharp/">
     <Project Path="FSharp/Day01/Day01.fsproj" />

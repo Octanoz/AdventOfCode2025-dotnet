@@ -1,9 +1,6 @@
 module SafeCracker
 
-let parseLine (line: string) =
-    let direction = line[0]
-    let distance = int line[1..]
-    direction, distance
+let parseLine (line: string) = line[0], int line[1..]
 
 let moveDial current direction distance =
     let remainder = distance % 100
@@ -28,13 +25,12 @@ let zeroesDuringRotation current direction distance =
     if crossesZero then zeroes + 1 else zeroes
 
 let timesZero zeroCounter input =
-    let rec loop dial input zeroes =
-        match input with
-        | [] -> zeroes
-        | head :: tail ->
-            let direction, distance = parseLine head
+    input
+    |> Seq.fold
+        (fun (dial, zeroes) line ->
+            let direction, distance = parseLine line
             let newDial = moveDial dial direction distance
             let newZeroes = zeroes + zeroCounter dial direction distance
-            loop newDial tail newZeroes
-
-    loop 50 input 0
+            newDial, newZeroes)
+        (50, 0)
+    |> snd
