@@ -14,6 +14,7 @@
   <Folder Name="/FSharp/">
     <Project Path="FSharp/Day01/Day01.fsproj" />
     <Project Path="FSharp/Day02/Day02.fsproj" />
+    <Project Path="FSharp/Day03/Day03.fsproj" />
   </Folder>
   <Project Path="AdventUtilities/AdventUtilities.csproj" />
 </Solution>
